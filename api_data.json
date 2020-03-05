@@ -1202,6 +1202,108 @@
     "groupTitle": "网络招聘会"
   },
   {
+    "type": "post",
+    "url": "/api/v1/wx/jobfairnet/im/seek/resume",
+    "title": "个人向企业发送简历(企业向个人索要简历,同意发送简历)",
+    "name": "im_seek_resume",
+    "group": "GroupJobFairNet",
+    "permission": [
+      {
+        "name": "token (个人)"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "im_id",
+            "description": "<p>企业的im账号</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "resume_id",
+            "description": "<p>简历ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<p>0 (就是同意) 1 不同意 (单纯的向企业发送简历的话就不带code)</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "请求示例:",
+          "content": "{\n    \"im_id\":\"aix_n_c_480_45\",\n    \"resume_id\":\"191\",\n    \"code\":\"0\"\n    }",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "发送成功:",
+          "content": "{\n    \"status\": 200,\n    \"msg\": \"成功\",\n    \"data\": \"成功\"\n    }",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "/home/ymh/www/aix-system/app/Http/Controllers/Api/JobfairNet/JobfairNetController.php",
+    "groupTitle": "网络招聘会"
+  },
+  {
+    "type": "post",
+    "url": "api/v1/wx/jobfairnet/im/userinfo",
+    "title": "获取聊天的信息",
+    "name": "im_userinfo",
+    "group": "GroupJobFairNet",
+    "permission": [
+      {
+        "name": "token"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "im_id",
+            "description": "<p>云信账号</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "请求示例:",
+          "content": "{\n        \"im_id\":\"aix_n_m_88_45\"\n      }",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "成功200:",
+          "content": "{\n    \"message\": \"OK\",\n    \"status\": 200,\n    \"data\": {\n    \"uid\": 88,\n    \"utype\": 2,\n    \"accid\": \"aix_n_m_88_45\",\n    \"realname\": \"蒋林姓名是最长的时候\",\n    \"sex_cn\": \"男\",\n    \"education_cn\": \"硕士\",\n    \"experience_cn\": \"1年以下\",\n    \"residence_cn\": \"浙江-舟山\",\n    \"householdaddress_cn\": \"浙江-舟山\",\n    \"qq\": \"425586441\",\n    \"weixin\": null,\n    \"age\": 32,\n    \"email\": \"425586441@qq.com\",\n    \"email_audit\": 0,\n    \"mobile\": 18358092689,\n    \"mobile_audit\": 0,\n    \"is_resume\": 1,\n    \"talk_id\": \"\",\n    \"wage_cn\": \"\",\n    \"job_name\": \"\",\n    \"evaluate_id\": \"\",\n    \"school\": \"牛津大学\",\n    \"intention_jobs\": \"行政专员/助理+分公司经理\",\n    \"resume_wage_cn\": \"3K~5K/月\",\n    \"work_companyname\": \"英国皇家科学研究院\",\n    \"work_job\": \"暗物质民用化研究员\",\n    \"district_cn\": \"舟山+玄武区\",\n    \"work_time\": \"2017-10-2019-1\",\n    \"educaion_time\": \"2013-6-2016-9\",\n    \"education_speciality\": \"暗物质实用化研究\",\n\"work_List\":\"[]//工作经历\"\n    }\n    }",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "/home/ymh/www/aix-system/app/Http/Controllers/Api/JobfairNet/JobfairNetController.php",
+    "groupTitle": "网络招聘会"
+  },
+  {
     "type": "get",
     "url": "/api/v1/wx/jobfairnet/im/company/talk",
     "title": "企业向个人发起洽谈",
@@ -1711,6 +1813,13 @@
             "optional": false,
             "field": "key",
             "description": "<p>搜索参数</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "online",
+            "description": "<p>是否筛选在线的企业,或者是否在线的求职者 带1</p>"
           }
         ]
       }
@@ -1754,14 +1863,14 @@
             "type": "String",
             "optional": false,
             "field": "evaluate_status",
-            "description": "<p>评价的状态</p>"
+            "description": "<p>企业对个人的评价的状态0:暂无评价,1：待定，2：可面试，3：不合适） 个人对企业的评价 （0:暂无评价，1：待定，2：合适，3：不合适）</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "evaluate_id",
-            "description": "<p>密码</p>"
+            "description": "<p>应聘记录ID</p>"
           }
         ]
       },
@@ -1845,6 +1954,66 @@
         {
           "title": "错误200:",
           "content": "{\n\"status\": 0,\n\"msg\": \"只能操作你自己的职位\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "/home/ymh/www/aix-system/app/Http/Controllers/Api/JobfairNet/JobfairNetController.php",
+    "groupTitle": "网络招聘会"
+  },
+  {
+    "type": "get",
+    "url": "api/v1/wx/jobfairnet/show_com?jobfair_id=68",
+    "title": "网络招聘会详情中的 参会企业和求职者",
+    "name": "jobfairnet_show_com",
+    "group": "GroupJobFairNet",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "jobfair_id",
+            "description": "<p>招聘会ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "page",
+            "description": "<p>页数</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "search_type",
+            "description": "<p>搜索类型 个人带person 职位job 企业company</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "key",
+            "description": "<p>搜索参数</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "online",
+            "description": "<p>是否筛选在线的企业,或者是否在线的求职者 带1</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "成功200:",
+          "content": "{\n\"jobfairCom\": \"参会企业信息\",\n\"perList\": \"求职者信息\"\n}",
           "type": "json"
         }
       ]
@@ -2318,7 +2487,7 @@
       "examples": [
         {
           "title": "成功200:",
-          "content": "{\n\"subsite\": \"分站信息\",\n\"close_reg\": \"是否关闭注册,0没关,其他就是关着的\",\n\"hong_kong_reg\": \"是否开启港澳台注册 1:开启\"\n\"sms\": \"是否开启短信服务 true:开启\"\n\"logo\": \"系统的logo\"\n\"district\": \"系统默认的地区,创建简历的工作地区默认\"\n\"upload_asset\":\"用户拼接图片地址  upload_asset+images_path\"\n}",
+          "content": "{\n\"subsite\": \"分站信息\",\n\"close_reg\": \"是否关闭注册,0没关,其他就是关着的\",\n\"hong_kong_reg\": \"是否开启港澳台注册 1:开启\"\n\"sms\": \"是否开启短信服务 true:开启\"\n\"logo\": \"系统的logo\",\n\"logo_white\": \"系统的logo(白底)\",\n\"logo_mini\": \"系统的迷你 logo\",\n\"logo_white_mini\": \"系统的迷你 logo(白底)\",\n\"district\": \"系统默认的地区,创建简历的工作地区默认\"\n\"upload_asset\":\"用户拼接图片地址  upload_asset+images_path\"\n}",
           "type": "json"
         }
       ]
@@ -2507,6 +2676,150 @@
   },
   {
     "type": "post",
+    "url": "/api/v1/wx/person/resume/resumeEduDelete",
+    "title": "删除教育经历",
+    "name": "resumeEduDelete",
+    "group": "GroupUserResume",
+    "permission": [
+      {
+        "name": "token"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>教育经历ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "resume_id",
+            "description": "<p>简历ID</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "请求示例:",
+          "content": "{\n\"resume_id\":\"792\",\n\n\"id\":\"486\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "成功200:",
+          "content": "{\n    \"status\": 200,\n    \"msg\": \"删除成功!\",\n    \"data\": \"删除成功!\"\n    }",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "/home/ymh/www/aix-system/app/Http/Controllers/Api/V1/WX/Person/ResumeController.php",
+    "groupTitle": "个人简历"
+  },
+  {
+    "type": "post",
+    "url": "api/v1/wx/person/resumes/resumeEducationAdd",
+    "title": "添加(修改)教育经历",
+    "name": "resumeEducationAdd",
+    "group": "GroupUserResume",
+    "permission": [
+      {
+        "name": "token"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>教育经历ID,修改时候需要</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "school",
+            "description": "<p>学校</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "education",
+            "description": "<p>学历id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "startyear",
+            "description": "<p>开始年份</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "startmonth",
+            "description": "<p>开始月份</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "endyear",
+            "description": "<p>结束年份</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "endmonth",
+            "description": "<p>结束月份</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "todate",
+            "description": "<p>为1 就是至今</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "请求示例:",
+          "content": "{\n    \"resume_id\":\"792\",\n    \"school\":\"五道口职业技术学院\",\n    \"education\":\"66\",\n    \"speciality\":\"软件工程\",\n    \"startyear\":2019,\n    \"startmonth\":1,\n    \"endyear\":\"2020\",\n    \"endmonth\":\"3\",\n    \"id\":\"486\"\n\n    }",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "成功200:",
+          "content": "会返回所有的教育经历",
+          "type": "String"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "/home/ymh/www/aix-system/app/Http/Controllers/Api/V1/WX/Person/ResumeController.php",
+    "groupTitle": "个人简历"
+  },
+  {
+    "type": "post",
     "url": "/api/v1/wx/person/resumes/resumeWorkAdd",
     "title": "添加(修改)工作经历",
     "name": "resumeWorkAdd",
@@ -2630,59 +2943,6 @@
         {
           "title": "添加成功会返回简历的ID:",
           "content": "{\n\"status\": 200,\n\"msg\": \"success\",\n\"data\": {\n\"id\": 606,\n\"tag\": null\n}\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "version": "0.0.0",
-    "filename": "/home/ymh/www/aix-system/app/Http/Controllers/Api/V1/WX/Person/ResumeController.php",
-    "groupTitle": "个人简历"
-  },
-  {
-    "type": "post",
-    "url": "/api/v1/wx/person/resume/del.do",
-    "title": "删除简历",
-    "name": "resume_del",
-    "group": "GroupUserResume",
-    "permission": [
-      {
-        "name": "token"
-      }
-    ],
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "id",
-            "description": "<p>简历ID</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "请求示例:",
-          "content": "{\n\"id\":720\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "examples": [
-        {
-          "title": "错误200:",
-          "content": "{\n\"status\": 0,\n\"msg\": \"简历不存在\"\n}\n{\n\"status\": 0,\n\"msg\": \"默认简历不能删除！\"\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "success": {
-      "examples": [
-        {
-          "title": "成功200:",
-          "content": "{\n\"status\": 200,\n\"msg\": \"删除成功!\",\n\"data\": \"删除成功!\"\n}",
           "type": "json"
         }
       ]
@@ -3028,6 +3288,57 @@
   },
   {
     "type": "post",
+    "url": "api/v1/wx/person/resume/resumeWorkDelete",
+    "title": "删除工作经历",
+    "name": "resume_resumeWorkDelete",
+    "group": "GroupUserResume",
+    "permission": [
+      {
+        "name": "token"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>工作经历ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "resume_id",
+            "description": "<p>简历ID</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "请求示例:",
+          "content": "{\n\"id\":\"428\",\n\"resume_id\":\"258\"\n\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "成功200:",
+          "content": "{\n\"status\": 200,\n\"msg\": \"删除成功!\",\n\"data\": \"删除成功!\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "/home/ymh/www/aix-system/app/Http/Controllers/Api/V1/WX/Person/ResumeController.php",
+    "groupTitle": "个人简历"
+  },
+  {
+    "type": "post",
     "url": "/api/v1/wx/person/resume/tag_del",
     "title": "删除标签",
     "name": "resume_tag_del",
@@ -3090,6 +3401,30 @@
     },
     "version": "0.0.0",
     "filename": "/home/ymh/www/aix-system/app/Http/Controllers/Api/V1/WX/Person/ResumeController.php",
+    "groupTitle": "个人简历"
+  },
+  {
+    "type": "get",
+    "url": "api/v1/wx/person/resumes_ok",
+    "title": "获取个人审核通过的简历",
+    "name": "resumes_ok",
+    "group": "GroupUserResume",
+    "permission": [
+      {
+        "name": "token"
+      }
+    ],
+    "success": {
+      "examples": [
+        {
+          "title": "成功200:",
+          "content": "{\n    \"status\": 200,\n    \"msg\": \"success\",\n    \"data\": [\n    {\n    \"resume_id\": 191,\n    \"resume_name\": \"简历20190131103133\"\n    },\n    {\n    \"resume_id\": 825,\n    \"resume_name\": \"简历20190131103133\"\n    }\n    ]\n    }",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "/home/ymh/www/aix-system/app/Http/Controllers/Api/V1/WX/Person/MembersController.php",
     "groupTitle": "个人简历"
   },
   {
@@ -3184,7 +3519,7 @@
       "examples": [
         {
           "title": "请求示例:",
-          "content": " {\n\"id\": \"255\", //{简历ID}\n\"techlevel\": 381, //技能等级\n\"current\": \"242\", //当前状态\n\"nature\": \"62\", {//工作性质}\n\"trade\": \"1,2,4\",  //{期望行业,可以选择多个用,隔开}\n\"intention_jobs_id\": \"1.16.113,1.16.114,1.16.115\", //{期望职位,可以选择多个用,隔开}\n\"district\": \"10.108.0\", //{地区}\n\"wage\": \"61\", //月薪分类\n\"wage_min\": \"10000\", //{最低工资}\n\"wage_max\": \"0\",   //{最高工资}\n\"subsite_id\": \"\" //{分站不需要传值}\n}",
+          "content": " {\n\"id\": \"255\", //{简历ID}\n\"techlevel\": 381, //技能等级\n\"current\": \"242\", //当前状态\n\"nature\": \"62\", {//工作性质}\n\"trade\": \"1,2,4\",  //{期望行业,可以选择多个用,隔开}\n\"intention_jobs_id\": \"1.16.113,1.16.114,1.16.115\", //{期望职位,可以选择多个用,隔开}\n\"district\": \"10.108.0\", //{地区}\n\"wage\": \"61\", //月薪分类\n\"wage_min\": \"10000\", //{最低工资}\n\"wage_max\": \"0\",   //{最高工资}\n\"subsite_id\": \"\" //{分站不需要传值}\n\"experience\": \"\" //{工作经验id}\n}",
           "type": "json"
         }
       ]
