@@ -2020,7 +2020,7 @@ define({ "api": [
       "examples": [
         {
           "title": "成功200:",
-          "content": "{\n\"jobfairCom\": \"参会企业信息\",\n\"perList\": \"求职者信息\"\n}",
+          "content": "{\n\"jobfairCom\": \"参会企业信息\",\n\"perList\": \"求职者信息\"\n\"job\": \"职位信息\"\n\"resumes\": \"简历信息\"\n}",
           "type": "json"
         }
       ]
