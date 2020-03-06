@@ -1757,7 +1757,14 @@
             "description": "<p>如果想搜索进行中就带 1  带举办就带 2,3</p>"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "title": "分页说明:",
+          "content": "http://develop.doc.jsaix.cn/web/#/9?page_id=119",
+          "type": "String"
+        }
+      ]
     },
     "success": {
       "examples": [
@@ -1990,7 +1997,7 @@
             "type": "String",
             "optional": false,
             "field": "search_type",
-            "description": "<p>搜索类型 个人带person 职位job 企业company</p>"
+            "description": "<p>搜索类型 个人带person 职位job 企业company 简历resume</p>"
           },
           {
             "group": "Parameter",
@@ -2487,7 +2494,7 @@
       "examples": [
         {
           "title": "成功200:",
-          "content": "{\n\"subsite\": \"分站信息\",\n\"close_reg\": \"是否关闭注册,0没关,其他就是关着的\",\n\"hong_kong_reg\": \"是否开启港澳台注册 1:开启\"\n\"sms\": \"是否开启短信服务 true:开启\"\n\"logo\": \"系统的logo\",\n\"logo_white\": \"系统的logo(白底)\",\n\"logo_mini\": \"系统的迷你 logo\",\n\"logo_white_mini\": \"系统的迷你 logo(白底)\",\n\"district\": \"系统默认的地区,创建简历的工作地区默认\"\n\"upload_asset\":\"用户拼接图片地址  upload_asset+images_path\"\n}",
+          "content": "{\n\"subsite\": \"分站信息\",\n\"close_reg\": \"是否关闭注册,0没关,其他就是关着的\",\n\"hong_kong_reg\": \"是否开启港澳台注册 1:开启\"\n\"sms\": \"是否开启短信服务 true:开启\"\n\"logo\": \"系统的logo\",\n\"logo_white\": \"系统的logo(白底)\",\n\"logo_mini\": \"系统的迷你 logo\",\n\"logo_white_mini\": \"系统的迷你 logo(白底)\",\n\"district\": \"系统默认的地区,创建简历的工作地区默认\"\n\"upload_asset\":\"用户拼接图片地址  upload_asset+images_path\"\n\"resume_man_png\":\"简历默认的男\",\n\"resume_woman_png\":\"简历默认的女\"\n}",
           "type": "json"
         }
       ]
