@@ -1163,6 +1163,193 @@ define({ "api": [
     "groupTitle": "企业"
   },
   {
+    "type": "post",
+    "url": "/api/v1/wx/jobfairnet/blue/createJobs",
+    "title": "蓝领招聘会创建群聊(创建招聘会)",
+    "name": "blue_createJobs",
+    "group": "GroupJobFairBlue",
+    "permission": [
+      {
+        "name": "token(管理员)"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>简历ID</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "请求示例:",
+          "content": "{\n\n    \"title\":\"测试蓝领\", //招聘会标题\n    \"number\":4,  //展位数\n    \"contact\":\"李彦宏\", //联系人名称\n    \"phone\":\"18812341234\", //联系人电话\n    \"undertake\":\"大兴国际机场\", //地址\n    \"jobfair_type\":\"\", //带空值\n    \"subsites\":[], //带空数组\n    \"subsite_id\":0, //分站默认带0\n    \"jobfair_introduction\":\"<p>阿萨莎莎大的我的</p>\", //招聘会简介\n    \"holddate_start\":\"2020-03-04 00:00:00\", //开始时间\n    \"holddate_end\":\"2020-03-21 00:00:00\", //结束时间\n    \"predetermined_start\":\"2020-02-26 00:00:00\", //预定开始时间\n    \"predetermined_end\":\"2020-03-07 00:00:00\", //预定结束时间\n    \"display\":\"1\", //显示状态(1正常 2暂停)\n    \"predetermined_status\":\"1\", //预定状态(1:允许预订,2:停止预订)\n    \"is_commonweal\":\"3\", //招聘会(1:消耗场次,2:消耗积分,3:公益)\n    \"predetermined_point\":\"100\", //预定消耗积分\n    \"jobsfair_num\":\"1\", //预定消耗场次\n    \"nosign_point\":\"300\", //未签到扣减积分\n    \"late_point\":\"100\" //迟到早退扣减积分\n\n    }",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "成功200:",
+          "content": "{\n\"status\": 200,\n\"msg\": \"success\",\n\"data\": {\n\"title\": \"测试蓝领\",\n\"holddate_start\": 1583251200,\n\"holddate_end\": 1584720000,\n\"contact\": \"李彦宏\",\n\"phone\": \"18812341234\",\n\"undertake\": \"大兴国际机场\",\n\"jobfair_type\": null,\n\"display\": \"1\",\n\"is_commonweal\": \"3\",\n\"predetermined_point\": \"100\",\n\"jobsfair_num\": \"1\",\n\"nosign_point\": \"300\",\n\"late_point\": \"100\",\n\"number\": 4,\n\"jobfair_introduction\": \"<p>阿萨莎莎大的我的</p>\",\n\"subsite_id\": 0,\n\"predetermined_status\": \"1\",\n\"predetermined_start\": 1582646400,\n\"predetermined_end\": 1583510400,\n\"status\": 1,\n\"updated_at\": \"2020-03-05 20:41:50\",\n\"created_at\": \"2020-03-05 20:41:49\",\n\"id\": 38,\n\"group_id\": \"2779830197\", //群号码\n\"group_owner\": \"aix_b_a_1_38\" //创建者云信账号\n}\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "/home/ymh/www/aix-system/app/Http/Controllers/Api/JobFairBlue/JobFairBlueController.php",
+    "groupTitle": "蓝领招聘会"
+  },
+  {
+    "type": "get",
+    "url": "api/v1/wx/jobfairnet/blue/show.do?id=38&uuid=123123123",
+    "title": "蓝领招聘会详情和(参加群聊接口)",
+    "name": "blue_show.do",
+    "group": "GroupJobFairBlue",
+    "permission": [
+      {
+        "name": "token (企业和个人)"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>招聘会ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "uuid",
+            "description": "<p>随机数</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "成功200:",
+          "content": "具体注释看网络招聘会详情",
+          "type": "String"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "/home/ymh/www/aix-system/app/Http/Controllers/Api/JobFairBlue/JobFairBlueController.php",
+    "groupTitle": "蓝领招聘会"
+  },
+  {
+    "type": "get-post",
+    "url": "api/v1/wx/jobfairnet/blue/jobfair/joinJobs",
+    "title": "招聘会职位库职位加入蓝领招聘会",
+    "name": "jobFairNet_joinJobs",
+    "group": "GroupJobFairBlue",
+    "permission": [
+      {
+        "name": "token"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "jobfair_id",
+            "description": "<p>招聘会ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "exid",
+            "description": "<p>参会记录ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Array",
+            "optional": false,
+            "field": "check_jobs_id",
+            "description": "<p>选择的职位ID</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "请求参数示例:",
+          "content": "{\n\"check_jobs_id\":[980,1024],\n\"jobfair_id\":48,\n\"exid\":223\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "请求示例:",
+          "content": "\"GET请求返回\":{\n       \"jobs\": \"我的所有职位\",\n       \"join_jobs\":\"已加入改的招聘会的职位\"\n},\n\n\"POST请求返回\":{\n  \"status\": 200,\n  \"msg\": \"编辑成功!\",\n  \"data\": \"编辑成功!\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "失败参数:",
+          "content": "{\n    招聘会已经结束\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "/home/ymh/www/aix-system/app/Http/Controllers/Api/JobFairBlue/JobFairBlueController.php",
+    "groupTitle": "蓝领招聘会"
+  },
+  {
+    "type": "get",
+    "url": "/api/v1/wx/jobfairnet/blue/select.do",
+    "title": "所有蓝领招聘会列表",
+    "name": "jobFairNet_select",
+    "group": "GroupJobFairBlue",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p>如果想搜索进行中就带 1  带举办就带 2,3</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "请求成功:",
+          "content": "{\n\"id\":45,\n\"title\":\"招聘会标题\",\n\"holddate_start\":1582074000(招聘会开始时间),\n\"holddate_end\":1582297200(招聘会结束时间),\n\"jobfair_type\":1(招聘会类型),\n\"contact\":\"杨先生\"(联系人),\n\"phone\":\"电话\",\n\"status\":\"招聘会的状态 1：开启；2：预定中；3：未开始；4：已结束  \",\n\"jobfair_com_count\":\"0(参会企业个数)\"\n\"put_jobs_count\" :\"0(参会职位)\"\n\"sign_user_count\" :\"7(求职者)\"\n\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "/home/ymh/www/aix-system/app/Http/Controllers/Api/JobFairBlue/JobFairBlueController.php",
+    "groupTitle": "蓝领招聘会"
+  },
+  {
     "type": "get",
     "url": "/api/v1/wx/jobfairnet/jobfair/search?search_type=company&search_key=江苏",
     "title": "网络招聘会首页搜索",
@@ -1384,6 +1571,26 @@ define({ "api": [
         "name": "token"
       }
     ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "type",
+            "description": "<p>招聘会类型(1 就是蓝领招聘会,2是现场招聘会,不带就是网络招聘会)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "audit",
+            "description": "<p>审核状态 (1:预订成功,2:等待确认,3:审核未通过  默认全部)</p>"
+          }
+        ]
+      }
+    },
     "success": {
       "examples": [
         {
@@ -1516,6 +1723,13 @@ define({ "api": [
             "optional": false,
             "field": "is_apply",
             "description": "<p>应聘结果（0:暂无评价,1：待定，2：可面试，3：不合适）</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "type",
+            "description": "<p>招聘会类型(1 就是蓝领招聘会,不带就是网络招聘会)</p>"
           }
         ]
       }
@@ -1524,7 +1738,7 @@ define({ "api": [
       "examples": [
         {
           "title": "请求成功:",
-          "content": "{\n\"jobfair_jobs\": \"招聘会职位\",\n\"tag_arr\" :\"状态标签\",\n\"jobfair_apply\":[\"jobfair_net_put_job_id\":\"应聘的职位ID\"],\n\"is_apply\": \"应聘结果（0:暂无评价,1：待定，2：可面试，3：不合适）\",\n \"is_job\":\"职位评价（0:暂无评价，1：待定，2：合适，3：不合适）\",\n\"net_put_job\":\"应聘的职位\",\n\"jobfair_net\":\"招聘会信息\",\n\"resumes\":\"我投递的简历信息\"\n\n}",
+          "content": "{\n\"jobfair_jobs\": \"招聘会职位\",\n\"tag_arr\" :\"状态标签\",\n\"jobfair_apply\":[\"jobfair_net_put_job_id\":\"应聘的职位ID\"],\n\"is_apply\": \"应聘结果（0:暂无评价,1：待定，2：可面试，3：不合适）\",\n \"is_job\":\"职位评价（0:暂无评价，1：待定，2：合适，3：不合适）\",\n\"net_put_job\":\"应聘的职位\",\n\"jobfair_net\":\"招聘会信息\",\n\"resumes\":\"我投递的简历信息\"\n\"type\":\"如果带1就是蓝领招聘会,不带则是网络\"\n\n}",
           "type": "json"
         }
       ]
@@ -2060,6 +2274,90 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "/home/ymh/www/aix-system/app/Http/Controllers/Api/V1/WX/Company/JobfairController.php",
+    "groupTitle": "招聘会"
+  },
+  {
+    "type": "get",
+    "url": "api/v1/wx/jobfairnet/now/select.do",
+    "title": "现场招聘会(和网络招聘会请求的参数一样)",
+    "name": "now_select.do",
+    "group": "GroupJobFair",
+    "success": {
+      "examples": [
+        {
+          "title": "成功200:",
+          "content": "具体查看网络招聘会(面板数据就用网络招聘会的数据)",
+          "type": "String"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "/home/ymh/www/aix-system/app/Http/Controllers/Api/JobFairBlue/JobFairBlueController.php",
+    "groupTitle": "招聘会"
+  },
+  {
+    "type": "get",
+    "url": "/api/v1/wx/jobfairnet/now/show/54?uuid=123123",
+    "title": "查看现场招聘会的信息",
+    "name": "now_show",
+    "group": "GroupJobFair",
+    "permission": [
+      {
+        "name": "token"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "uuid",
+            "description": "<p>客户端唯一ID,就是要一直带这个值,可以从https://bandung.gitee.io/aix_system_apidoc/#api-GroupSystem-system_uuid获取</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "page",
+            "description": "<p>页数</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "search_type",
+            "description": "<p>搜索类型 个人带person 职位job 企业company</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "key",
+            "description": "<p>搜索参数</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "online",
+            "description": "<p>是否筛选在线的企业,或者是否在线的求职者 带1</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "返回示例:",
+          "content": "{\n\"jobfair\": \"招聘会信息\",\n\"hotjob\": \"热门职位\",\n\"jobfairComCount\": \"参会企业个数\",\n\"putJobCount\": \"参会职位个数\",\n\"perCount\": \"求职者个数\",\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "/home/ymh/www/aix-system/app/Http/Controllers/Api/JobfairNet/JobfairNetController.php",
     "groupTitle": "招聘会"
   },
   {
@@ -3526,7 +3824,7 @@ define({ "api": [
       "examples": [
         {
           "title": "请求示例:",
-          "content": " {\n\"id\": \"255\", //{简历ID}\n\"techlevel\": 381, //技能等级\n\"current\": \"242\", //当前状态\n\"nature\": \"62\", {//工作性质}\n\"trade\": \"1,2,4\",  //{期望行业,可以选择多个用,隔开}\n\"intention_jobs_id\": \"1.16.113,1.16.114,1.16.115\", //{期望职位,可以选择多个用,隔开}\n\"district\": \"10.108.0\", //{地区}\n\"wage\": \"61\", //月薪分类\n\"wage_min\": \"10000\", //{最低工资}\n\"wage_max\": \"0\",   //{最高工资}\n\"subsite_id\": \"\" //{分站不需要传值}\n\"experience\": \"\" //{工作经验id}\n}",
+          "content": " {\n\"id\": \"255\", //{简历ID}\n\"techlevel\": 381, //技能等级\n\"current\": \"242\", //当前状态\n\"nature\": \"62\", {//工作性质}\n\"trade\": \"1,2,4\",  //{期望行业,可以选择多个用,隔开}\n\"intention_jobs_id\": \"1.16.113,1.16.114,1.16.115\", //{期望职位,可以选择多个用,隔开}\n\"district\": \"10.108.0\", //{地区}\n\"wage\": \"61\", //月薪分类\n\"wage_min\": \"10000\", //{最低工资}\n\"wage_max\": \"0\",   //{最高工资}\n\"subsite_id\": \"\" //{分站不需要传值}\n\"experience\": \"\" //{工作经验id}\n\"residence\": \"\" //{现居住地址}\n}",
           "type": "json"
         }
       ]
