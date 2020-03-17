@@ -1351,6 +1351,30 @@ define({ "api": [
   },
   {
     "type": "get",
+    "url": "api/v1/wx/jobfairnet/blue/im/accid?jobfair_id=42",
+    "title": "获取蓝领的网易云馨账号",
+    "name": "jobFairNetblue__im_accid",
+    "group": "GroupJobFairBlue",
+    "permission": [
+      {
+        "name": "token"
+      }
+    ],
+    "success": {
+      "examples": [
+        {
+          "title": "请求成功:",
+          "content": "{\n\"status\": 200,\n\"msg\": \"success\",\n\"data\": {\n\"accid\": \"aix_n_m_211_36\",\n\"token\": \"eb163727917cbba1eea208541a643e74\"\n}\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "/home/ymh/www/aix-system/app/Http/Controllers/Api/JobFairBlue/JobFairBlueController.php",
+    "groupTitle": "蓝领招聘会"
+  },
+  {
+    "type": "get",
     "url": "/api/v1/wx/jobfairnet/jobfair/jobs_apply?type=1",
     "title": "蓝领招聘会职位的应聘记录",
     "name": "jobFairblue_jobs_apply",
@@ -1516,7 +1540,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "code",
-            "description": "<p>0 (就是同意) 1 不同意 (单纯的向企业发送简历的话就不带code)</p>"
+            "description": "<p>4 (就是同意) 1 不同意 (单纯的向企业发送简历的话就code 带5)</p>"
           }
         ]
       },
@@ -2372,10 +2396,91 @@ define({ "api": [
     "groupTitle": "招聘会"
   },
   {
+    "type": "post",
+    "url": "api/v1/wx/person/jobfair/appoint/jobs",
+    "title": "预约招聘会职位",
+    "name": "jobfair_appoint_jobs",
+    "group": "GroupJobFair",
+    "permission": [
+      {
+        "name": "token(个人)"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "position_id",
+            "description": "<p>展位ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "jobsfair_job_id",
+            "description": "<p>找平会职位ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "jobfairid",
+            "description": "<p>招聘会ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "company_id",
+            "description": "<p>企业ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "resume_id",
+            "description": "<p>简历ID,这个是需要发一次这个接口返回是否有多份简历,若只有一份则直接用默认的简历</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "请求示例:",
+          "content": "{\n        \"position_id\": \"6859\",\n        \"jobsfair_job_id\": \"1425\",\n        \"jobfairid\": \"147\",\n        \"company_id\": \"373\",\n        \"resume_id\":\"22\"\n        }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "返回注意事项:",
+          "content": "若返回 \"status\": 201, 那么说明这个人有多份简历,就需要他选择简历去投递,\n然后再请求这个接口带上参数resume_id",
+          "type": "String"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "成功200:",
+          "content": "{\n    \"status\": 200,\n    \"msg\": \"职位预约成功！\",\n    \"data\": \"职位预约成功！\"\n    }",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "/home/ymh/www/aix-system/app/Http/Controllers/Api/V1/WX/Person/JobFairController.php",
+    "groupTitle": "招聘会"
+  },
+  {
     "type": "get",
     "url": "api/v1/wx/jobfairnet/now/select.do",
     "title": "现场招聘会(和网络招聘会请求的参数一样)",
-    "name": "now_select.do",
+    "name": "now_select",
     "group": "GroupJobFair",
     "success": {
       "examples": [
@@ -2453,6 +2558,78 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "/home/ymh/www/aix-system/app/Http/Controllers/Api/JobfairNet/JobfairNetController.php",
+    "groupTitle": "招聘会"
+  },
+  {
+    "type": "post",
+    "url": "api/v1/wx/company/pad/interview/invitation",
+    "title": "企业面试邀约",
+    "name": "pad_interview_invitation",
+    "group": "GroupJobFair",
+    "permission": [
+      {
+        "name": "token"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "personal_uid",
+            "description": "<p>用户ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "job_id",
+            "description": "<p>职位ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "exid",
+            "description": "<p>定展记录ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "position_id",
+            "description": "<p>展位ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "jobfair_id",
+            "description": "<p>招聘会ID</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "请求示例:",
+          "content": "{\n        \"personal_uid\":\"27\",\n        \"job_id\":\"30\",\n        \"exid\":40,\n        \"position_id\":\"180\",\n        \"jobfair_id\":\"6\"\n      }",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "成功200:",
+          "content": "{\n   \"status\": 1,\n   \"msg\": \"邀请成功\"\n   }",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "/home/ymh/www/aix-system/app/Http/Controllers/Api/V1/WX/Company/ResumeController.php",
     "groupTitle": "招聘会"
   },
   {
