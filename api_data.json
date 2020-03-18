@@ -1207,6 +1207,83 @@
     "groupTitle": "蓝领招聘会"
   },
   {
+    "type": "post",
+    "url": "api/v1/wx/jobfairnet/im/group/get/jobs",
+    "title": "(企业)获取我审核通过的参会职位",
+    "name": "im_group_get_jobs",
+    "group": "GroupJobFairBlue",
+    "permission": [
+      {
+        "name": "token"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "im_id",
+            "description": "<p>im账号</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "请求示例:",
+          "content": "{\"im_id\":\"aix_v1_b_c_316_49\"}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "成功200:",
+          "content": "{\n\"message\": \"OK\",\n\"status\": 200,\n\"data\": [\n{\n\"utype\": \"1//用户类型\",\n\"job_id\": \"13//职位id8\",\n\"job_name\": \"划水工程师//职位名称\",\n\"company_name\": \"上海朗绿建筑科技有限公司//企业名称\",\n\"wage\": \"10000以上/月//薪资\",\n\"jobsContent\": \"划水//工作内容\",\n\"jobUrl\": \"jobfairBlue/show/quarters/138\",\n\"district\": \"北京/北京市/石景山区//地址\",\n\"education\": \"不限学历//学历\"\n}\n]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "/home/ymh/www/aix-system/app/Http/Controllers/Api/JobfairNet/JobfairNetController.php",
+    "groupTitle": "蓝领招聘会"
+  },
+  {
+    "type": "post",
+    "url": "api/v1/wx/jobfairnet/im/group/get/resumes",
+    "title": "(个人)获取我审核通过的简历",
+    "name": "im_group_get_resumes",
+    "group": "GroupJobFairBlue",
+    "permission": [
+      {
+        "name": "token"
+      }
+    ],
+    "error": {
+      "examples": [
+        {
+          "title": "错误:",
+          "content": "{\n\"status\": 0,\n\"msg\": \"您还没有登录\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "成功200:",
+          "content": "{\n\"status\": 200,\n\"msg\": \"success\",\n\"data\": [\n{\n\"utype\": 2,\n\"resume_id\": 256,\n\"resume_name\": \"简历1\",\n\"realname\": \"蒋林姓名是最长的时候\",\n\"sex_cn\": \"男\",\n\"education_cn\": \"硕士\",\n\"experience_cn\": \"3-5年\",\n\"residence_cn\": \"浙江-舟山\",\n\"householdaddress_cn\": \"浙江-舟山\",\n\"wage\": \"3000~5000/月\",\n\"intention_jobs\": \"前台/总机/接待+人事专员/助理+人事经理/主管+行政专员/助理+分公司经理\",\n\"resumeUrl\": \"content/resumes/show?id=256&token=1\",\n\"specialty\": \"测试测试！\",\n\"mobile\": 15625241475\n}\n]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "/home/ymh/www/aix-system/app/Http/Controllers/Api/JobfairNet/JobfairNetController.php",
+    "groupTitle": "蓝领招聘会"
+  },
+  {
     "type": "get",
     "url": "/api/v1/wx/jobfairnet/jobfair/enact?type=1",
     "title": "蓝领招聘会的定展记录",
@@ -1426,6 +1503,43 @@
   },
   {
     "type": "get",
+    "url": "api/v1/wx/jobfairnet/blue/cache?id=49",
+    "title": "蓝领招聘会大厅企业和个人的心跳包",
+    "name": "jobfairnet_blue_cache",
+    "group": "GroupJobFairBlue",
+    "permission": [
+      {
+        "name": "token"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>招聘会id</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "成功200:",
+          "content": "定时器请求",
+          "type": "String"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "/home/ymh/www/aix-system/app/Http/Controllers/Api/JobFairBlue/JobFairBlueController.php",
+    "groupTitle": "蓝领招聘会"
+  },
+  {
+    "type": "get",
     "url": "api/v1/wx/jobfairnet/blue/show.do",
     "title": "蓝领招聘会详情",
     "name": "jobfairnet_blue_show",
@@ -1547,7 +1661,7 @@
       "examples": [
         {
           "title": "请求示例:",
-          "content": "{\n    \"im_id\":\"aix_n_c_480_45\",\n    \"resume_id\":\"191\",\n    \"code\":\"0\"\n    }",
+          "content": "{\n\"im_id\":\"aix_n_c_480_45\",\n\"resume_id\":\"191\",\n\"code\":\"0\"\n}",
           "type": "json"
         }
       ]
@@ -1556,7 +1670,7 @@
       "examples": [
         {
           "title": "发送成功:",
-          "content": "{\n    \"status\": 200,\n    \"msg\": \"成功\",\n    \"data\": \"成功\"\n    }",
+          "content": "{\n\"status\": 200,\n\"msg\": \"成功\",\n\"data\": \"成功\"\n}",
           "type": "json"
         }
       ]
