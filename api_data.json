@@ -1361,6 +1361,13 @@
             "optional": false,
             "field": "check_jobs_id",
             "description": "<p>选择的职位ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "on_join",
+            "description": "<p>为1的时候只需要带新加入的职位,不会过滤掉老的职位</p>"
           }
         ]
       },
