@@ -1208,6 +1208,66 @@ define({ "api": [
   },
   {
     "type": "post",
+    "url": "api/v1/wx/jobfairnet/blue/im/person/apply",
+    "title": "投递蓝领招聘会简历",
+    "name": "blue_im_person_apply",
+    "group": "GroupJobFairBlue",
+    "permission": [
+      {
+        "name": "token"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "jobfair_put_job_id",
+            "description": "<p>职位ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "resume_id",
+            "description": "<p>简历ID</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "请求示例:",
+          "content": "{\n\"jobfair_put_job_id\":\"143\",\n\"resume_id\":\"768\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "错误200:",
+          "content": "{\n\"status\": 0,\n\"msg\": \"您已投递过该职位，不可重复投递\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "成功200:",
+          "content": "{\n\"status\": 200,\n\"msg\": \"投递成功\",\n\"data\": \"投递成功\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "/home/ymh/www/aix-system/app/Http/Controllers/Api/JobFairBlue/JobFairBlueController.php",
+    "groupTitle": "蓝领招聘会"
+  },
+  {
+    "type": "post",
     "url": "api/v1/wx/jobfairnet/im/group/get/jobs",
     "title": "(企业)获取我审核通过的参会职位",
     "name": "im_group_get_jobs",
