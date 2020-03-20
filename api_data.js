@@ -775,168 +775,168 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "jobs_name",
-            "description": "<p>(必填无疑)\t职位名称</p>"
+            "description": "<p>(必填无疑)    职位名称</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "iscustomize",
-            "description": "<p>否\t不需要的字段(带空值)</p>"
+            "description": "<p>否    不需要的字段(带空值)</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "nature",
-            "description": "<p>(必填无疑)\t工作性质</p>"
+            "description": "<p>(必填无疑)    工作性质</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "ygxs",
-            "description": "<p>否\t用工形式</p>"
+            "description": "<p>否    用工形式</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "techlevel",
-            "description": "<p>否\t技能登记</p>"
+            "description": "<p>否    技能登记</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "jobcategory",
-            "description": "<p>(必填无疑)\t职位类别</p>"
+            "description": "<p>(必填无疑)    职位类别</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "district",
-            "description": "<p>(必填无疑)\t地区分类</p>"
+            "description": "<p>(必填无疑)    地区分类</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "wage",
-            "description": "<p>(必填无疑)\t薪资待遇（-1面议，0自定义，其他为选择区间）</p>"
+            "description": "<p>(必填无疑)    薪资待遇（-1面议，0自定义，其他为选择区间）</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "education",
-            "description": "<p>否\t学历ID</p>"
+            "description": "<p>否    学历ID</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "experience",
-            "description": "<p>否\t工作经验ID</p>"
+            "description": "<p>否    工作经验ID</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "sex",
-            "description": "<p>string\t否\t性别：1男；2女；0不限</p>"
+            "description": "<p>string    否    性别：1男；2女；0不限</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "amount",
-            "description": "<p>(必填无疑)\t招聘人数</p>"
+            "description": "<p>(必填无疑)    招聘人数</p>"
           },
           {
             "group": "Parameter",
             "type": "Array",
             "optional": false,
             "field": "age",
-            "description": "<p>(必填无疑)\t年龄数组 [18,22]</p>"
+            "description": "<p>(必填无疑)    年龄数组 [18,22]</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "tag",
-            "description": "<p>(必填无疑)\t标签分类(“152,153,154”)</p>"
+            "description": "<p>(必填无疑)    标签分类(“152,153,154”)</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "jobs_content",
-            "description": "<p>(必填无疑)\t职位描述</p>"
+            "description": "<p>(必填无疑)    职位描述</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "contact",
-            "description": "<p>(必填无疑)\t联系人姓名</p>"
+            "description": "<p>(必填无疑)    联系人姓名</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "telephone",
-            "description": "<p>(必填无疑)\t联系手机号码</p>"
+            "description": "<p>(必填无疑)    联系手机号码</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "landline_tel",
-            "description": "<p>(必填无疑)\t联系电话号码</p>"
+            "description": "<p>(必填无疑)    联系电话号码</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "email",
-            "description": "<p>(必填无疑)\t邮箱</p>"
+            "description": "<p>(必填无疑)    邮箱</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "address",
-            "description": "<p>(必填无疑)\t联系地址</p>"
+            "description": "<p>(必填无疑)    联系地址</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "contact_show",
-            "description": "<p>(必填无疑)\t是否显示联系人 1显示 0 不显示</p>"
+            "description": "<p>(必填无疑)    是否显示联系人 1显示 0 不显示</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "telephone_show",
-            "description": "<p>(必填无疑)\t是否显示手机号码 1显示 0 不显示</p>"
+            "description": "<p>(必填无疑)    是否显示手机号码 1显示 0 不显示</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "landline_tel_show",
-            "description": "<p>(必填无疑)\t是否显示电话号码 1显示 0 不显示</p>"
+            "description": "<p>(必填无疑)    是否显示电话号码 1显示 0 不显示</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "email_show",
-            "description": "<p>(必填无疑)\t是否显示邮箱 1显示 0 不显示</p>"
+            "description": "<p>(必填无疑)    是否显示邮箱 1显示 0 不显示</p>"
           },
           {
             "group": "Parameter",
@@ -964,35 +964,35 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "wage_min",
-            "description": "<p>是\t最大薪资</p>"
+            "description": "<p>是    最大薪资</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "wage_max",
-            "description": "<p>无\t最小薪资</p>"
+            "description": "<p>无    最小薪资</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "map_x",
-            "description": "<p>无\t地图坐标X轴</p>"
+            "description": "<p>无    地图坐标X轴</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "map_y",
-            "description": "<p>无\t地图坐标Y轴</p>"
+            "description": "<p>无    地图坐标Y轴</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "syq",
-            "description": "<p>无\t试用期ID s@apiParam {String}　yqxz_min\t\t无\t试用期工资</p>"
+            "description": "<p>无    试用期ID s@apiParam {String}　yqxz_min        无    试用期工资</p>"
           }
         ]
       },
@@ -1008,7 +1008,7 @@ define({ "api": [
       "examples": [
         {
           "title": "成功200:",
-          "content": "{\n    \"status\": 1,\n    \"msg\": \"招聘会职位添加成功！\",\n    \"id\": {}\n}\n\n{\n    \"status\": 1,\n    \"msg\": \"招聘会职位修改成功！\",\n    \"id\": \"1070\"\n    }",
+          "content": "{\n\"status\": 1,\n\"msg\": \"招聘会职位添加成功！\",\n\"id\": {}\n}\n\n{\n\"status\": 1,\n\"msg\": \"招聘会职位修改成功！\",\n\"id\": \"1070\"\n}",
           "type": "json"
         }
       ]
@@ -1267,6 +1267,25 @@ define({ "api": [
     "groupTitle": "蓝领招聘会"
   },
   {
+    "type": "get",
+    "url": "api/v1/wx/jobfairnet/blue/jobfair/search?search_type=jobfair&search_key=蓝",
+    "title": "蓝领招聘会首页搜索",
+    "name": "blue_jobfair_search",
+    "group": "GroupJobFairBlue",
+    "parameter": {
+      "examples": [
+        {
+          "title": "请求示例:",
+          "content": "具体参照 https://bandung.gitee.io/aix_system_apidoc/#api-GroupJobFairNet-home_search",
+          "type": "String"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "/home/ymh/www/aix-system/app/Http/Controllers/Api/JobFairBlue/JobFairBlueController.php",
+    "groupTitle": "蓝领招聘会"
+  },
+  {
     "type": "post",
     "url": "api/v1/wx/jobfairnet/im/group/get/jobs",
     "title": "(企业)获取我审核通过的参会职位",
@@ -1452,7 +1471,7 @@ define({ "api": [
       "examples": [
         {
           "title": "失败参数:",
-          "content": "{\n    招聘会已经结束\n}",
+          "content": "{\n招聘会已经结束\n}",
           "type": "json"
         }
       ]
@@ -1566,6 +1585,66 @@ define({ "api": [
     },
     "version": "0.0.0",
     "filename": "/home/ymh/www/aix-system/app/Http/Controllers/Api/JobfairNet/JobfairNetController.php",
+    "groupTitle": "蓝领招聘会"
+  },
+  {
+    "type": "get",
+    "url": "api/v1/wx/jobfairnet/blue/show_com?jobfair_id=68",
+    "title": "蓝领招聘会详情中的 参会企业和求职者",
+    "name": "jobfairblue_show_com",
+    "group": "GroupJobFairBlue",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "jobfair_id",
+            "description": "<p>招聘会ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "page",
+            "description": "<p>页数</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "search_type",
+            "description": "<p>搜索类型 个人带person 职位job 企业company 简历resume</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "key",
+            "description": "<p>搜索参数</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "online",
+            "description": "<p>是否筛选在线的企业,或者是否在线的求职者 带1</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "成功200:",
+          "content": "{\n\"jobfairCom\": \"参会企业信息\",\n\"perList\": \"求职者信息\"\n\"job\": \"职位信息\"\n\"resumes\": \"简历信息\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "/home/ymh/www/aix-system/app/Http/Controllers/Api/JobFairBlue/JobFairBlueController.php",
     "groupTitle": "蓝领招聘会"
   },
   {
@@ -2465,7 +2544,7 @@ define({ "api": [
       "examples": [
         {
           "title": "请求示例:",
-          "content": "{\n    \"y_id\":[1033,1034]\n    }",
+          "content": "{\n\"y_id\":[1033,1034]\n}",
           "type": "json"
         }
       ]
