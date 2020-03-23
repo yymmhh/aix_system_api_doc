@@ -1286,6 +1286,43 @@
     "groupTitle": "蓝领招聘会"
   },
   {
+    "type": "get",
+    "url": "api/v1/wx/jobfairnet/blue/show/quarters/find?id=156",
+    "title": "蓝领招聘会参会职位详情",
+    "name": "blue_show_quarters_find",
+    "group": "GroupJobFairBlue",
+    "permission": [
+      {
+        "name": "token"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>职位ID</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "成功200:",
+          "content": "{\n\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "/home/ymh/www/aix-system/app/Http/Controllers/Api/JobFairBlue/JobFairBlueController.php",
+    "groupTitle": "蓝领招聘会"
+  },
+  {
     "type": "post",
     "url": "api/v1/wx/jobfairnet/im/group/get/jobs",
     "title": "(企业)获取我审核通过的参会职位",
